@@ -1,14 +1,14 @@
-# Diego Batista
+# Karan Luciano
 
-Desenvolvedor Web / Front-end.
+Desenvolvedor Web / Back-end.
 
-Formação acadêmica: Universidade Federal do Mato Grosso - UFMT (Cursando)<br>
+Formação acadêmica: Universidade Estadual do Estado de Mato Grosso - UNEMAT<br>
 Curso: Ciência da Computação<br>
-Cidade: Cuiabá / MT<br>
-Celular: (65) 9.9269 - 7045<br>
-Email: diego.silva@aluno.ic.ufmt.br
+Cidade: Barra do Bugres / MT<br>
+Celular: (69) 9.9237 - 0744<br>
+Email: karanluciano1@gmail.com
 
-Desenvolvedor Front-end.
+
 
 ## Redes Sociais
 
@@ -17,7 +17,7 @@ Desenvolvedor Front-end.
 ## Experiencia
 
 * 01/2020 - 06/2020 | Estágiario -
-  (Desenvolvedor Front-end na [Estuda.com](https://www.estuda.com/))<br>
+  (Desenvolvedor Front-end na [aaaaaa](https://www.aaaaa.com/))<br>
   Trabalhando tanto com criação de layouts como desenvolvimento utilizando HTML5, CSS3, Bootstrap, VueJS, JavaScript e PHP.<br>
  
 ### Front-end
@@ -26,13 +26,13 @@ Desenvolvedor Front-end.
 - CSS, Metodologias - (BEM), Pré processadores - (SASS), Mobile First, Media Queries, Flexbox.
 - JavaScript - (ES6, Vanilla JS, JQuery)
 - Frameworks e Bibliotecas Front-end - (VueJS, Vuex, Quasar, Bootstrap)
-- Ferramentas - VSCode, EsLint, & Stylelint.
+- Ferramentas - Sublime, EsLint, & Stylelint.
 
 ### Back-end
 
 - NodeJS - (ExpressJS, Nodemon, NestJS, AdonisJS, JWT).
 - PHP - (Laravel).
-- Ferramentas - VSCode, EsLint, Stylelint, & Insomnia.
+- Ferramentas - Sublime, EsLint, Stylelint, & Insomnia.
 
 ### Mobile
 
@@ -44,6 +44,7 @@ Desenvolvedor Front-end.
 - PostgreSQL
 - MySQL
 - MongoDB
+- MariaDB
 
 ### Package Manager
 
@@ -58,21 +59,10 @@ Desenvolvedor Front-end.
 
 - Webpack.
 
-### Design
-
-- CorelDraw.
-- Photoshop.
-- Adobe XD.
-- Figma.
-
 ### Version control
 
 - Git (Git Flow).
 
-### CMS
-
-- Wordpress.
-- Netilify.
 
 ## Erro?
 
