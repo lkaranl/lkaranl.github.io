@@ -1752,3 +1752,43 @@ i.icon-white {
 		width: 100%;
 	}
 }
+
+/*##############################################*/
+
+
+.menu{
+list-style:none;
+float:right;
+margin-top: 1.5em;
+}
+
+.menu li{
+position:relative;
+float:right;
+}
+
+.menu li a{color:#FFFFFF; text-decoration:none; padding:5px 10px; display:inline;}
+
+.menu li a:hover{
+/*background:#043c07;*/
+color:#9fe4a1;
+/*-moz-box-shadow:0 3px 10px 0 #CCC;*/
+/*-webkit-box-shadow:0 3px 10px 0 #ccc;*/
+text-shadow:0px 0px 5px #fff;
+position:relative;
+}
+
+.menu li  ul{
+position:absolute;
+left:10;
+background-color:#043c07;
+display:none;
+}
+
+.menu li:hover ul, .menu li.over ul{display:block;}
+
+.menu li ul li{
+/*border:1px solid #c0c0c0;*/
+display:block;
+width:350px;
+}
