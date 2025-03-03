@@ -1,349 +1,840 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="utf-8">
-  <title>ET - ElanoliveTech </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Site do Centro Acadêmico de Ciência da Computação da Unemat de Barra do Bugres">
-  <meta name="author" content="Karan Luciano">
-  <meta name="keywords" content="CACC, Centro Acadêmico de Ciência da Computação, UNEMAT">
-  <link href="css/bootstrap-responsive.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
-  <link href="color/default.css" rel="stylesheet">
-  <link rel="shortcut icon" href="img/favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karan Luciano | Desenvolvedor Fullstack</title>
+    <style>
+        :root {
+            --primary: #1a2634;
+            --secondary: #3498db;
+            --accent: #2ecc71;
+            --light: #f4f6f9;
+            --dark: #2c3e50;
+            --text: #333333;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px var(--shadow);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 20px;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-img {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--accent);
+            background-color: #ddd;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #27ae60;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* About Section */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background-color: var(--accent);
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        /* Skills Section */
+        .skills {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill {
+            margin-bottom: 30px;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .skill-bar {
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background-color: var(--accent);
+            border-radius: 5px;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 1.5s ease;
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--dark);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 6px;
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        .timeline-content h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .timeline-content p {
+            margin-bottom: 10px;
+        }
+
+        .timeline-date {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        /* Education Section */
+        .education-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .education-item {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .education-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .education-item h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .education-item p {
+            margin-bottom: 10px;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--dark);
+            color: white;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-icon {
+            background-color: var(--accent);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .social-links {
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            margin: 0 10px;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 60px;
+                left: -100%;
+                width: 100%;
+                flex-direction: column;
+                background-color: var(--primary);
+                padding: 20px 0;
+                transition: left 0.3s;
+                z-index: 999;
+                box-shadow: 0 5px 15px var(--shadow);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .hero-content {
+                flex-direction: column-reverse;
+            }
+
+            .hero-text, .hero-img {
+                padding: 20px 0;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 36px;
+            }
+
+            .timeline::after {
+                left: 30px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 20px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item::after {
+                left: 20px;
+            }
+
+            .timeline-item:nth-child(odd)::after {
+                right: auto;
+                left: 20px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+    </style>
 </head>
 <body>
-  <!-- navbar -->
-  
-  <font face="Good Times"> <!-- INICIO FONT -->
-  <div class="navbar-wrapper">
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-default" style="background-color: #043c07;">
+    <!-- Header -->
+    <header>
         <div class="container">
-          <!-- Responsive navbar -->
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-          </a>
-          <h1 class="brand"><a href="index.html"><img src="img/icon-et.png" alt="Icone do Centro Acadêmico de Ciência da Computação"></a></h1>
-          <!-- navigation -->
-
-          <nav class="pull-right nav-collapse collapse navigation">
-              <ul id="menu-main" class="nav">
-              <li><a href="#somos">Sobre Nós</a></li>
-              <li><a href="#evento">Cursos</a></li>
-              <li><a href="#servicos">Serviços & Produtos</a></li>
-              <li><a href="#equipe">Equipe</a></li>
-              <li><a href="#rh">RH</a></li>
-              <li><a href="#alunos">Alunos</a></li>
-              <li><a href="#empresas">Empresas Parceiras</a></li>
-            </ul>
-          </nav>
+            <nav>
+                <div class="logo">KL</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#skills">Habilidades</a></li>
+                    <li><a href="#experience">Experiência</a></li>
+                    <li><a href="#education">Formação</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+                <div class="menu-toggle">☰</div>
+            </nav>
         </div>
-      </div>
-    </div>
-  </div>
-  </font> <!-- FIM FONT -->
-  <!-- Header area -->
-  <div id="header-wrapper" class="header-slider">
-    <header class="clearfix">
-      <div class="logo">
-        <img src="img/et.png" alt="Logo do Centro Academico de Ciência da Computação" />
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="span12">
-            <h2 style="font-size: 35px; text-shadow: black 0.1em 0.1em 0.2em">
-              <strong>
-              <font face="Good Times">	
-              ET-ElanoliveTech
-               </font> <!-- FIM FONT -->
-          </strong><br>
-            </h2>
-
-            <h2 style="text-shadow: black 0.1em 0.1em 0.2em">
-            	<font face="Good Times">
-            Escola de Cursos e Treinamentos
-			</font> <!-- FIM FONT -->
-        </h2>
-            <!-- end slider -->
-            
-          </div>
-        </div>
-      </div>
     </header>
-  </div>
-  <!-- spacer section -->
-  <section class="spacer concrete" style="background-color: #2d9233;">
-    <div class="container">
-      <div class="row">
-        <div class="span6 alignright flyLeft">
-          <blockquote class="large">
-            As vezes são as pessoas que menos imaginamos, que fazem as coisas que ninguém pode imaginar.<cite>Alan Turing</cite>
-          </blockquote>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text fade-in">
+                    <h1>Karan Luciano</h1>
+                    <p>Analista de TI | Desenvolvedor Fullstack</p>
+                    <a href="#contact" class="btn">Entre em Contato</a>
+                </div>
+                <div class="hero-img fade-in delay-1">
+                    <img src="/api/placeholder/300/300" alt="Karan Luciano" class="profile-img">
+                </div>
+            </div>
         </div>
-        <div class="span6 aligncenter flyRight">
-          <i class="icon-coffee icon-10x"></i>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- section quem somos -->
-  <section id="somos"style="background-color: #9fe4a1;">
-    <div class="container">
-      <center><h2><strong><br><br>Quem Somos</strong></h2></center>
-      <div class="row">
-        <div class="span4 offset1">
-          <h2><strong>ET - ElanoliveTech</strong></h2>
-          <p style="text-align: justify;">
-            ET - ElanoliveTech é uma escola de cursos e treinamentos, tendo como foco e objetivo ….
-          </p>
-        </div>
-        <div class="span6">
-          <div class="aligncenter">
-            <img src="img/icons/creativity.png" alt="" />
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- end spacer section -->
-    <!-- seção: equipe -->
-    <!-- fim da seção: equipe -->
-    <section id="evento" class="section">
-      <div class="container" id="eventos">
-        <center><h2><strong>Cursos</strong></h2></center>
-        <div class="row">
-
-          <div class="span3">
-            <div class="home-post">
-              <div class="post-image">
-                <a target="_blank" href="_blank"><img class="max-img" src="img/events/1.png" alt="Logo da cati 2019" /></a>
-                <center><h4 class="nomargin"><a target="_blank" href="_blank" class="btn btn-mini btn-info">Acesse a Página do Evento</a></h4></center>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="span3">
-            <div class="home-post">
-              <div class="post-image">
-                <a target="_blank" href="_blank"><img class="max-img" src="img/events/2.png" alt="Logo da cati 2019" /></a>
-                <center><h4 class="nomargin"><a target="_blank" href="_blank" class="btn btn-mini btn-info">Formulário de inscrição </a></h4></center>
-                <!-- <center><h4 class="nomargin"><a target="_blank" href="https://www.sympla.com.br/9-congresso-academico-de-tecnologia-e-informatica__177993" class="btn btn-mini btn-info">Incrições</a></h4></center> -->
-              </div>
-            </div>
-          </div>
-
-          <div class="span3">
-            <div class="home-post">
-              <div class="post-image">
-                <a target="_blank" href="_blank"><img class="max-img" src="img/events/3.png" alt="Logo da cati 2019" /></a>
-                <center><h4 class="nomargin"><a target="_blank" href="_blank" class="btn btn-mini btn-info">Formulário de inscrição </a></h4></center>
-                <!-- <center><h4 class="nomargin"><a target="_blank" href="https://www.sympla.com.br/9-congresso-academico-de-tecnologia-e-informatica__177993" class="btn btn-mini btn-info">Incrições</a></h4></center> -->
-              </div>
-            </div>
-          </div>
-
-
-          <div class="span3">
-            <div class="home-post">
-              <div class="post-image">
-                <a target="_blank" href="_blank"><img class="max-img" src="img/events/4.png" alt="Logo da cati 2019" /></a>
-                <center><h4 class="nomargin"><a target="_blank" href="_blank" class="btn btn-mini btn-info">Formulário de inscrição </a></h4></center>
-                <!-- <center><h4 class="nomargin"><a target="_blank" href="https://www.sympla.com.br/9-congresso-academico-de-tecnologia-e-informatica__177993" class="btn btn-mini btn-info">Incrições</a></h4></center> -->
-              </div>
-            </div>
-          </div>
-
-
-
-          <div class="span3">
-            <div class="home-post">
-              <div class="post-image">
-                <a target="_blank" href="_blank"><img class="max-img" src="img/events/5.png" alt="Logo da cati 2019" /></a>
-                <center><h4 class="nomargin"><a target="_blank" href="_blank" class="btn btn-mini btn-info">Formulário de inscrição </a></h4></center>
-                <!-- <center><h4 class="nomargin"><a target="_blank" href="https://www.sympla.com.br/9-congresso-academico-de-tecnologia-e-informatica__177993" class="btn btn-mini btn-info">Incrições</a></h4></center> -->
-              </div>
-            </div>
-          </div>  
-
-          <div class="span3">
-            <div class="home-post">
-              <div class="post-image">
-                <a target="_blank" href="_blank"><img class="max-img" src="img/events/6.png" alt="Logo da cati 2019" /></a>
-                <center><h4 class="nomargin"><a target="_blank" href="_blank" class="btn btn-mini btn-info">Formulário de inscrição </a></h4></center>
-                <!-- <center><h4 class="nomargin"><a target="_blank" href="https://www.sympla.com.br/9-congresso-academico-de-tecnologia-e-informatica__177993" class="btn btn-mini btn-info">Incrições</a></h4></center> -->
-              </div>
-            </div>
-          </div>  
-
-           <div class="span3">
-            <div class="home-post">
-              <div class="post-image">
-                <a target="_blank" href="_blank"><img class="max-img" src="img/events/7.png" alt="Logo da cati 2019" /></a>
-                <center><h4 class="nomargin"><a target="_blank" href="_blank" class="btn btn-mini btn-info">Formulário de inscrição </a></h4></center>
-                <!-- <center><h4 class="nomargin"><a target="_blank" href="https://www.sympla.com.br/9-congresso-academico-de-tecnologia-e-informatica__177993" class="btn btn-mini btn-info">Incrições</a></h4></center> -->
-              </div>
-            </div>
-          </div>  
-
-        </div>
-
-        <div class="blankdivider30"></div>
-        <div class="aligncenter">
-        </div>
-      </div>
     </section>
 
-
-    <section id="equipe">
-      <div class="container">
-        <center><h2><strong>Equipe de Professores</strong></h2></center>
-        <div class="row">
-          <div class="offset1 span2 flyIn">
-            
-<!--             <div class="people">
-              <img class="team-thumb img-circle" src="img/team/karan.png" alt="" />
-              <h3>Karan Luciano</h3>
-              <h3>
-                <a href="https://www.facebook.com/Karannl" target="_blank" ><i class="icon-circled icon-bgblue icon-facebook"></i></a>
-                <a href="https://github.com/lkaranl/" target="_blank" ><i class="icon-circled icon-bgblue icon-github"></i></a>
-              </h3>
-              <p>Presidente</p>
-            </div> -->
-          </div>
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Sobre Mim</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text fade-in delay-1">
+                    <h3>Analista de TI e Desenvolvedor Fullstack</h3>
+                    <p>Com mais de uma década de experiência na área de TI, atuo atualmente como Analista de TI e Desenvolvedor Fullstack na CASSI, em Brasília. Meu conhecimento abrange tecnologias como Java, C#, Azure DevOps, JavaScript e React.js.</p>
+                    <p>Tenho uma sólida formação acadêmica, sendo bacharel em Ciência da Computação (UNEMAT), mestrando em Ciência da Computação (UFAM), e especialista em Desenvolvimento Web (FOCUS). Além disso, possuo certificados em áreas como Pen Test, DevOps e LGPD.</p>
+                    <p>Minha carreira é marcada pela liderança em eventos acadêmicos e publicações em tecnologia.</p>
+                </div>
+            </div>
         </div>
-        <!-- <center><h2><strong>Gestão 2019</strong></h2></center> -->
-        <div class="row">
-
-          <div class="offset1 span2 flyIn">
-            <div class="people">
-              <img class="team-thumb img-circle" src="img/team/erica.png" alt="" />
-              <h3>Erica</h3>
-              <h3>
-                <a href="https://www.instagram.com/ericaangelolive/" target="_blank" ><i class="icon-circled icon-bgblue icon-instagram"></i></a>
-                <!-- <a href="https://www.linkedin.com/in/cosmelorim/" target="_blank" ><i class="icon-circled icon-bgblue icon-linkedin"></i></a> -->
-              </h3>
-              <p>Presidenta</p>
-            </div>
-          </div>
-
-          <div class=" span2 flyIn">
-            <div class="people">
-              <img class="team-thumb img-circle" src="img/team/elienton.png" alt="" />
-              <h3>Elielton</h3>
-              <h3>
-                <a href="https://www.instagram.com/elielton_anjos/" target="_blank" ><i class="icon-circled icon-bgblue icon-instagram"></i></a>
-              </h3>
-              <p>Presidento</p>
-            </div>
-          </div>
-
-           <div class=" span2 flyIn">
-            <div class="people">
-              <img class="team-thumb img-circle" src="img/team/karan.png" alt="" />
-              <h3>Karan</h3>
-              <h3>
-                <a href="https://www.instagram.com/luciano.karan/" target="_blank" ><i class="icon-circled icon-bgblue icon-instagram"></i></a>
-              </h3>
-              <p>Humilde funcionário</p>
-            </div>
-          </div>
-
-
-
-      
-      <!-- /.container -->
     </section>
-    <!-- seção: projetos -->
-    <section id="projetos" class="section blue">
-      <div class="container">
-        <h4>Projetos</h4>
-        <!-- Four columns -->
-        <div class="row">
-          <div class="span6 animated-fast flyIn">
-            <div class="service-box">
-              <img src="img/icons/trophy.png" alt="" />
-              <h2>Treinamento</h2>
-              <p>
-                Realizações de treinamento que ...
-              </p>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Habilidades</h2>
             </div>
-          </div>
-          <div class="span6 animated flyIn">
-            <div class="service-box">
-              <img src="img/icons/laptop.png" alt="" />
-              <h2>Cursos</h2>
-              <p>
-                Ofertar cursos que ...
-              </p>
+            <div class="skills-container">
+                <div class="skill fade-in delay-1">
+                    <div class="skill-name">
+                        <span>JavaScript</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="skill fade-in delay-1">
+                    <div class="skill-name">
+                        <span>C#</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="skill fade-in delay-2">
+                    <div class="skill-name">
+                        <span>.NET Framework</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%"></div>
+                    </div>
+                </div>
+                <div class="skill fade-in delay-2">
+                    <div class="skill-name">
+                        <span>Java</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 75%"></div>
+                    </div>
+                </div>
+                <div class="skill fade-in delay-3">
+                    <div class="skill-name">
+                        <span>React.js</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="skill fade-in delay-3">
+                    <div class="skill-name">
+                        <span>Azure DevOps</span>
+                        <span>70%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 70%"></div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </section>
-    <!-- end section: projetos -->
-    <!-- spacer section -->
-    <section class="spacer bg3">
-      <div class="container">
-        <div class="row">
-          <div class="span12 aligncenter flyLeft">
-            <blockquote class="large">
-              Queremos provocar, inspirar, capacitar, conectar, desafiar e incentivar o protagonismo através do desenvolvimento de uma mentalidade empreendedora.
-            </blockquote>
-          </div>
-          <div class="span12 aligncenter flyRight">
-            <i class="icon-rocket icon-10x"></i>
-          </div>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Experiência Profissional</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <h3>Analista de TI | Dev Fullstack</h3>
+                        <p class="timeline-date">Setembro 2021 - Presente</p>
+                        <p>CASSI - Brasília, Distrito Federal</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in delay-1">
+                    <div class="timeline-content">
+                        <h3>Aux. Analista de Redes</h3>
+                        <p class="timeline-date">Fevereiro 2021 - Setembro 2021</p>
+                        <p>NBS Telecom - Ji-Paraná, Rondônia</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in delay-2">
+                    <div class="timeline-content">
+                        <h3>Analista de sistemas</h3>
+                        <p class="timeline-date">Janeiro 2016 - Janeiro 2018</p>
+                        <p>PREFEITURA DE BARRA DO BUGRES</p>
+                        <p>Suporte Técnico em geral, manutenção em rede externa e interna, bem como manutenção do sistema da secretaria de saúde (E-SUS)</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in delay-3">
+                    <div class="timeline-content">
+                        <h3>Analista de sistemas</h3>
+                        <p class="timeline-date">Janeiro 2014 - Janeiro 2015</p>
+                        <p>Prefeitura de Ji-Parana - Ji-Paraná, RO</p>
+                        <p>Suporte e atividades técnicas em geral (Relacionada em informática)</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
-    <!-- end spacer section -->
-    <!-- section: contact -->
-    <section id="contact" class="section green">
-      <div class="container">
-        <center>
-          <h4>Entre em contato</h4>  
-          <h5 style="color: #FFF">Fale conosco e aproveite para nos seguir em nossas redes sociais.</h5>
-        </center>
-        <center>
-          <a href="https://www.instagram.com/et_elanolivetech/" target="_blank"><i class="icon-circled icon-bgdark icon-instagram icon-2x"></i></a>
-          <a href="https://www.facebook.com/ElanoliveTech/" target="_blank"><i class="icon-circled icon-bgdark icon-facebook  icon-2x"></i></a>
-          <a href=" " target="_blank"><i class="icon-circled icon-bgdark icon-envelope  icon-2x"></i></a>
-        </center>
-      </div>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Formação Acadêmica</h2>
+            </div>
+            <div class="education-container">
+                <div class="education-item fade-in">
+                    <h3>Mestrado em Ciência da Computação</h3>
+                    <p>Universidade Federal do Amazonas (UFAM)</p>
+                    <p>Redes de Computadores e Sistemas Distribuídos</p>
+                    <p>2020 - 2022</p>
+                </div>
+                <div class="education-item fade-in delay-1">
+                    <h3>Especialização em Desenvolvimento Web</h3>
+                    <p>Faculdade Focus</p>
+                    <p>Junho 2022 - Janeiro 2023</p>
+                </div>
+                <div class="education-item fade-in delay-2">
+                    <h3>Bacharelado em Ciência da Computação</h3>
+                    <p>Universidade do Estado de Mato Grosso (UNEMAT)</p>
+                    <p>2015 - 2020</p>
+                </div>
+            </div>
+        </div>
     </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Certificações</h2>
+            </div>
+            <div class="education-container">
+                <div class="education-item fade-in">
+                    <h3>Montagem e Manutenção de Computadores</h3>
+                </div>
+                <div class="education-item fade-in delay-1">
+                    <h3>Lei Geral de Proteção de Dados Pessoais (LGPD)</h3>
+                </div>
+                <div class="education-item fade-in delay-2">
+                    <h3>Microsoft - Fundamentos de Rede</h3>
+                </div>
+                <div class="education-item fade-in delay-3">
+                    <h3>DevOps Essentials</h3>
+                </div>
+                <div class="education-item fade-in delay-4">
+                    <h3>Redes Locais de Computadores</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Publicações</h2>
+            </div>
+            <div class="education-container">
+                <div class="education-item fade-in">
+                    <h3>ArchScan: Uma Proposta de Port Scan TCP/UDP</h3>
+                </div>
+                <div class="education-item fade-in delay-1">
+                    <h3>Segurança na Internet uma Abordagem Fundamentada</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Contato</h2>
+            </div>
+            <div class="contact-info">
+                <div class="fade-in">
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div>
+                            <h3>Telefone</h3>
+                            <p>+55 (69) 9.9237-0744</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-in delay-1">
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>karanluciano1@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-in delay-2">
+                    <div class="contact-item">
+                        <div class="contact-icon">🔗</div>
+                        <div>
+                            <h3>LinkedIn</h3>
+                            <p>linkedin.com/in/karanluciano-2b7598159</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-in delay-3">
+                    <div class="contact-item">
+                        <div class="contact-icon">💻</div>
+                        <div>
+                            <h3>GitHub</h3>
+                            <p>github.com/lkaranl</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-      <div class="container">
-        <div class="row">
-          <div class="span2">
-            <img src="img/et.png" alt="Logo do Centro Acadêmido de Ciência da Computação">
-          </div>
-          <div class="span6 offset1">
-            <p class="copyright">
-              ET - ElanoliveTech<br>
-              Endereço: Entre Av. Brasil e Manel Franco, 1770 T-16 - Nova Brasília, Ji-Paraná - RO, 76908-614<br>
-              &copy; Karan Luciano
-
-            </p>
-          </div>
-<!--           <div class="span2 offset1">
-            <img src="img/brasao_unemat.png" alt="Logo da Unemat">
-          </div> -->
+        <div class="container">
+            <div class="social-links">
+                <a href="https://github.com/lkaranl" target="_blank">GH</a>
+                <a href="https://linkedin.com/in/karanluciano-2b7598159" target="_blank">IN</a>
+            </div>
+            <p>&copy; 2025 Karan Luciano. Todos os direitos reservados.</p>
         </div>
-      </div>
-      <!-- ./container -->
     </footer>
-    <a href="#" class="scrollup"><i class="icon-angle-up icon-square icon-bgdark icon-2x"></i></a>
-    <script src="js/jquery.js"></script>
-    <script src="js/jquery.scrollTo.js"></script>
-    <script src="js/jquery.nav.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/jquery.prettyPhoto.js"></script>
-    <script src="js/isotope.js"></script>
-    <script src="js/jquery.flexslider.js"></script>
-    <script src="js/inview.js"></script>
-    <script src="js/animate.js"></script>
-    <script src="js/validate.js"></script>
-    <script src="js/custom.js"></script>
 
-  </body>
-  </html>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Toggle
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+
+            // Smooth Scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                    }
+
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Skills Animation
+            const skillBars = document.querySelectorAll('.skill-progress');
+            
+            // Function to check if element is in viewport
+            function isInViewport(element) {
+                const rect = element.getBoundingClientRect();
+                return (
+                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.bottom >= 0
+                );
+            }
+            
+            // Function to animate skill bars when visible
+            function animateSkillBars() {
+                skillBars.forEach(bar => {
+                    if (isInViewport(bar) && !bar.classList.contains('animated')) {
+                        bar.style.transform = 'scaleX(' + (bar.style.width.replace('%', '') / 100) + ')';
+                        bar.classList.add('animated');
+                    }
+                });
+            }
+            
+            // Animate on scroll
+            window.addEventListener('scroll', animateSkillBars);
+            
+            // Initial animation check
+            animateSkillBars();
+
+            // Fade in elements on scroll
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            function fadeElementsIn() {
+                fadeElements.forEach(element => {
+                    if (isInViewport(element) && !element.classList.contains('visible')) {
+                        element.classList.add('visible');
+                        element.style.opacity = '1';
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', fadeElementsIn);
+            fadeElementsIn();
+        });
+    </script>
+</body>
+</html>
